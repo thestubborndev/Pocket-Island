@@ -3,6 +3,8 @@
 (function () {
     "use strict";
     var utils = wooga.castle.utils,
+        prefix = wooga.castle.prefix,
+        prefixedTransform = utils.prefix('Transform'),
         AnimsFactory = function (view, config) {
 
             if (!view) {
@@ -157,7 +159,7 @@
 
         top = entityView.y;
         left = entityView.x;
-        style.webkitTransform = "translate3d(" + (left) + "px," + (top) + "px,0)";
+        style[prefixedTransform] = "translate3d(" + (left) + "px," + (top) + "px,0)";
 
         rootNode.appendChild(castleOverlay);
 
@@ -207,9 +209,9 @@
 
         rootNode.appendChild(element);
 
-        element.addEventListener("webkitAnimationEnd", function animationEndHandler (event) {
+        element.addEventListener(utils.prefix("AnimationEnd"), function animationEndHandler (event) {
             if (event.target === element) {
-                element.removeEventListener("webkitAnimationEnd", animationEndHandler, false);
+                element.removeEventListener(utils.prefix("AnimationEnd"), animationEndHandler, false);
                 rootNode.removeChild(element);
                 if( typeof config.callback === "function") {
                     config.callback();
@@ -259,12 +261,12 @@
             left = ((view.scrollLeft + leftIn + ( width* 0.5 ) )  -0.5 * iconDefiniition.width * gridUnit );
 
             style.top = style.left = 0;
-            style.webkitTransform = "translate3d(" + (left) + "px," + (top) + "px,0)";
+            style[prefixedTransform] = "translate3d(" + (left) + "px," + (top) + "px,0)";
 
             rootNode.appendChild(feedbackicon);
 
             setTimeout(function(){
-                style.webkitTransform = "translate3d(" + (destination.offsetLeft + 10) + "px," + (destination.offsetTop) + "px,0)";
+                style[prefixedTransform] = "translate3d(" + (destination.offsetLeft + 10) + "px," + (destination.offsetTop) + "px,0)";
 
                 utils.removeOnAnimationEnd(feedbackicon, function () {
                     wooga.castle.DooberTooltip.get(config.feedback[1]).add(amount);
@@ -277,15 +279,15 @@
 
 
     var oAnimationTemplate =
-            '@-webkit-keyframes {oName} {\n' +
-                '0%   { -webkit-transform: translateX(0); }\n' +
-                '100% { -webkit-transform: translateX({oEnd}px); }\n' +
+            '@-' + prefix + '-keyframes {oName} {\n' +
+                '0%   { -' + prefix + '-transform: translateX(0); }\n' +
+                '100% { -' + prefix + '-transform: translateX({oEnd}px); }\n' +
             '}';
     var iAnimationTemplate =
-            '@-webkit-keyframes {iName} {\n' +
-                '0%   { -webkit-transform: translateY(0); }\n' +
-                '50%  { -webkit-transform: translateY({iMid}px); }\n' +
-                '100% { -webkit-transform: translateY({iEnd}px); }\n' +
+            '@-' + prefix + '-keyframes {iName} {\n' +
+                '0%   { -' + prefix + '-transform: translateY(0); }\n' +
+                '50%  { -' + prefix + '-transform: translateY({iMid}px); }\n' +
+                '100% { -' + prefix + '-transform: translateY({iEnd}px); }\n' +
             '}';
 
     var animationsTimeout = 3000;
@@ -353,11 +355,11 @@
         style.top = top + "px";
         style.left = left + "px";
 
-        feedbackicon.style.webkitTransform = "translate3d(0px,0px,0)";
+        feedbackicon.style[prefixedTransform] = "translate3d(0px,0px,0)";
 
         setTimeout(function () {
             var position = animationsConfig[config.feedback[1]];
-            feedbackicon.style.webkitTransform = "translate3d(" + position.oEnd + "px," + position.iEnd + "px,0)";
+            feedbackicon.style[prefixedTransform] = "translate3d(" + position.oEnd + "px," + position.iEnd + "px,0)";
         }, 50 );
 
         var finisher = function () {
@@ -367,10 +369,10 @@
                 var trstr = "translate3d(" + (-(feedbackicon.offsetLeft - finalDestination3d.left )+ destination.offsetWidth - 58) + "px,"
                             + ( -(feedbackicon.offsetTop - finalDestination3d.top )) + "px,0)";
 
-                style.webkitTransition = '3s, opacity 2s 1s';
-                style.webkitTransform = trstr;
+                style[utils.prefix('Transition')] = '3s, opacity 2s 1s';
+                style[prefixedTransform] = trstr;
                 style.opacity = 1;
-                feedbackicon.addEventListener('webkitTransitionEnd', function(ev){
+                feedbackicon.addEventListener(utils.prefix('TransitionEnd'), function(ev){
                     if(feedbackicon.parentNode){
                         feedbackicon.parentNode.removeChild(feedbackicon);
                         // TODO refactor this to be general!!!1
@@ -424,14 +426,14 @@
         feedbackicon.appendChild( iconDefiniition.image.cloneNode() );
 
         style.top = style.left = 0;
-        style.webkitTransform = "translate3d(" + (destination.offsetLeft + 10) + "px," + (destination.offsetTop) + "px,0)";
+        style[prefixedTransform] = "translate3d(" + (destination.offsetLeft + 10) + "px," + (destination.offsetTop) + "px,0)";
 
         rootNode.appendChild(feedbackicon);
 
         setTimeout(function () {
             top = (view.scrollTop + entityView.y + ( entityView.height * 0.5 ) );
             left = ((view.scrollLeft + entityView.x + ( entityView.width * 0.5 ) )  -0.5 * iconDefiniition.width * gridUnit );
-            style.webkitTransform = "translate3d(" + (left) + "px," + (top) + "px,0)";
+            style[prefixedTransform] = "translate3d(" + (left) + "px," + (top) + "px,0)";
             style.opacity = 1;
             utils.removeOnAnimationEnd(feedbackicon);
         }, 1);
