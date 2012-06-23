@@ -4,12 +4,15 @@
     "use strict";
     var utils = wooga.castle.utils,
         prefix = wooga.castle.prefix,
-        prefixedTransform = utils.prefix('Transform'),
+        oAnimationTemplate,
+        iAnimationTemplate,
+        animationsConfig,
         AnimsFactory = function (view, config) {
 
             if (!view) {
                 return;
             }
+
 
             this.view = view;
             this.rootNode = document.createElement('div');
@@ -140,8 +143,61 @@
                 this.showItemFeedback(message);
                 delete message.amount;
             }, this);
+
+            this.initAnimationDefinitions();
         };
 
+
+    AnimsFactory.prototype.initAnimationDefinitions = function () {
+            oAnimationTemplate = 
+            '@-' + prefix + '-keyframes {oName} {\n' +
+                '0%   { -' + prefix + '-transform: translateX(0); }\n' +
+                '100% { -' + prefix + '-transform: translateX({oEnd}px); }\n' +
+            '}';
+            iAnimationTemplate =
+            '@-' + prefix + '-keyframes {iName} {\n' +
+                '0%   { -' + prefix + '-transform: translateY(0); }\n' +
+                '50%  { -' + prefix + '-transform: translateY({iMid}px); }\n' +
+                '100% { -' + prefix + '-transform: translateY({iEnd}px); }\n' +
+            '}';
+            var animationsTimeout = 3000;
+            animationsConfig = {
+                    coins: {
+                        oEnd: -50,
+                        iMid: -50,
+                        iEnd: 50
+                    },
+                    level: {
+                        oEnd: 60,
+                        iMid: -50,
+                        iEnd: 35
+                    },
+                    food: {
+                        oEnd: 70,
+                        iMid: -125,
+                        iEnd: 40
+                    },
+                    lock: {
+                        oEnd: 70,
+                        iMid: -125,
+                        iEnd: 40
+                    }
+            };
+
+        [oAnimationTemplate, iAnimationTemplate].forEach(function (template) {
+            Object.keys(animationsConfig).forEach(function (key) {
+                var animationRules = template.replace(/\{\w+\}/g, function (matchedStr) {
+                        switch (matchedStr) {
+                            case "{oName}": return key + "OuterAnimation";
+                            case "{iName}": return key + "InnerAnimation";
+                            default: return animationsConfig[key][matchedStr.slice(1, -1)];
+                        }
+                    });
+
+                document.styleSheets[0].insertRule(animationRules, 0);
+            });
+        });
+    };
     AnimsFactory.prototype.castleUpgradeTransition = function(entityView) {
         var castleOverlay = document.createElement('div'),
             style = castleOverlay.style,
@@ -159,7 +215,7 @@
 
         top = entityView.y;
         left = entityView.x;
-        style[prefixedTransform] = "translate3d(" + (left) + "px," + (top) + "px,0)";
+        style[wooga.castle.prefixedTransform] = "translate3d(" + (left) + "px," + (top) + "px,0)";
 
         rootNode.appendChild(castleOverlay);
 
@@ -261,12 +317,12 @@
             left = ((view.scrollLeft + leftIn + ( width* 0.5 ) )  -0.5 * iconDefiniition.width * gridUnit );
 
             style.top = style.left = 0;
-            style[prefixedTransform] = "translate3d(" + (left) + "px," + (top) + "px,0)";
+            style[wooga.castle.prefixedTransform] = "translate3d(" + (left) + "px," + (top) + "px,0)";
 
             rootNode.appendChild(feedbackicon);
 
             setTimeout(function(){
-                style[prefixedTransform] = "translate3d(" + (destination.offsetLeft + 10) + "px," + (destination.offsetTop) + "px,0)";
+                style[wooga.castle.prefixedTransform] = "translate3d(" + (destination.offsetLeft + 10) + "px," + (destination.offsetTop) + "px,0)";
 
                 utils.removeOnAnimationEnd(feedbackicon, function () {
                     wooga.castle.DooberTooltip.get(config.feedback[1]).add(amount);
@@ -278,55 +334,6 @@
 
 
 
-    var oAnimationTemplate =
-            '@-' + prefix + '-keyframes {oName} {\n' +
-                '0%   { -' + prefix + '-transform: translateX(0); }\n' +
-                '100% { -' + prefix + '-transform: translateX({oEnd}px); }\n' +
-            '}';
-    var iAnimationTemplate =
-            '@-' + prefix + '-keyframes {iName} {\n' +
-                '0%   { -' + prefix + '-transform: translateY(0); }\n' +
-                '50%  { -' + prefix + '-transform: translateY({iMid}px); }\n' +
-                '100% { -' + prefix + '-transform: translateY({iEnd}px); }\n' +
-            '}';
-
-    var animationsTimeout = 3000;
-    var animationsConfig = {
-            coins: {
-                oEnd: -50,
-                iMid: -50,
-                iEnd: 50
-            },
-            level: {
-                oEnd: 60,
-                iMid: -50,
-                iEnd: 35
-            },
-            food: {
-                oEnd: 70,
-                iMid: -125,
-                iEnd: 40
-            },
-            lock: {
-                oEnd: 70,
-                iMid: -125,
-                iEnd: 40
-            }
-        };
-
-    [oAnimationTemplate, iAnimationTemplate].forEach(function (template) {
-        Object.keys(animationsConfig).forEach(function (key) {
-            var animationRules = template.replace(/\{\w+\}/g, function (matchedStr) {
-                    switch (matchedStr) {
-                        case "{oName}": return key + "OuterAnimation";
-                        case "{iName}": return key + "InnerAnimation";
-                        default: return animationsConfig[key][matchedStr.slice(1, -1)];
-                    }
-                });
-
-            document.styleSheets[0].insertRule(animationRules, 0);
-        });
-    });
 
 
     AnimsFactory.prototype.showItemFeedback = function (config) {
@@ -355,11 +362,11 @@
         style.top = top + "px";
         style.left = left + "px";
 
-        feedbackicon.style[prefixedTransform] = "translate3d(0px,0px,0)";
+        feedbackicon.style[wooga.castle.prefixedTransform] = "translate3d(0px,0px,0)";
 
         setTimeout(function () {
             var position = animationsConfig[config.feedback[1]];
-            feedbackicon.style[prefixedTransform] = "translate3d(" + position.oEnd + "px," + position.iEnd + "px,0)";
+            feedbackicon.style[wooga.castle.prefixedTransform] = "translate3d(" + position.oEnd + "px," + position.iEnd + "px,0)";
         }, 50 );
 
         var finisher = function () {
@@ -370,7 +377,7 @@
                             + ( -(feedbackicon.offsetTop - finalDestination3d.top )) + "px,0)";
 
                 style[utils.prefix('Transition')] = '3s, opacity 2s 1s';
-                style[prefixedTransform] = trstr;
+                style[wooga.castle.prefixedTransform] = trstr;
                 style.opacity = 1;
                 feedbackicon.addEventListener(utils.prefix('TransitionEnd'), function(ev){
                     if(feedbackicon.parentNode){
@@ -426,14 +433,14 @@
         feedbackicon.appendChild( iconDefiniition.image.cloneNode() );
 
         style.top = style.left = 0;
-        style[prefixedTransform] = "translate3d(" + (destination.offsetLeft + 10) + "px," + (destination.offsetTop) + "px,0)";
+        style[wooga.castle.prefixedTransform] = "translate3d(" + (destination.offsetLeft + 10) + "px," + (destination.offsetTop) + "px,0)";
 
         rootNode.appendChild(feedbackicon);
 
         setTimeout(function () {
             top = (view.scrollTop + entityView.y + ( entityView.height * 0.5 ) );
             left = ((view.scrollLeft + entityView.x + ( entityView.width * 0.5 ) )  -0.5 * iconDefiniition.width * gridUnit );
-            style[prefixedTransform] = "translate3d(" + (left) + "px," + (top) + "px,0)";
+            style[wooga.castle.prefixedTransform] = "translate3d(" + (left) + "px," + (top) + "px,0)";
             style.opacity = 1;
             utils.removeOnAnimationEnd(feedbackicon);
         }, 1);

@@ -18,7 +18,7 @@
         });
         wooga.castle.prefix = prefix;
         //this is the most used prefixed prop
-        wooga.caste.prefixedTransform = prefix + 'Transform';
+        wooga.castle.prefixedTransform = prefix + 'Transform';
     }());
 
     wooga.castle.capabilities = {
