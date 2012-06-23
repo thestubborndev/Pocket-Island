@@ -864,6 +864,10 @@ wooga.castle.config = wooga.castle.config || {};
         return 'You need ' + utils.goldDelta(originalCost) + ' more gold to ' + (desiredAction || 'do that');
     };
 
+    utils.prefix = function (prop) {
+        return wooga.castle.prefix + prop;
+    }
+
 
     wooga.castle.utils = utils;
 
