@@ -194,7 +194,11 @@
                         }
                     });
 
-                document.styleSheets[0].insertRule(animationRules, 0);
+                try{
+                    document.styleSheets[0].insertRule(animationRules, 0);
+                } catch (e) {
+                    //meh
+                }
             });
         });
     };
