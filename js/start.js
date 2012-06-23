@@ -8,6 +8,17 @@
     wooga.castle.GRID_UNIT = 48;
     wooga.castle.IMAGES_BASE_URL = "images/entities/";
 
+    (function () {
+        var style = document.createElement('div').style,
+            prefix;
+        ['webkit', 'moz', 'o', 'ms', ''].forEach(function (candidate) {
+            if ('undefined' !== typeof style[candidate + 'Transform']) {
+                prefix = candidate;
+            }
+        });
+        wooga.castle.prefix = prefix;
+    }());
+
     wooga.castle.capabilities = {
         touch: /(iPod|iPhone|iPad|Android)/.test(navigator.userAgent),
         iPod: /** this is how you test: disable the next comment */ /**true || */navigator.userAgent.indexOf('iPod') !== -1,
