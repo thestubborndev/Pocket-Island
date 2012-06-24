@@ -11,14 +11,15 @@
     (function () {
         var style = document.createElement('div').style,
             prefix;
-        ['webkit', 'moz', 'o', 'ms', ''].forEach(function (candidate) {
+        ['webkit', 'Moz', 'o', 'ms', ''].forEach(function (candidate) {
             if ('undefined' !== typeof style[candidate + 'Transform']) {
                 prefix = candidate;
             }
+            return !prefix;
         });
         wooga.castle.prefix = prefix;
         //this is the most used prefixed prop
-        wooga.castle.prefixedTransform = prefix + 'Transform';
+        wooga.castle.prefixedTransform = prefix? prefix + 'Transform' : 'transform';
     }());
 
     wooga.castle.capabilities = {
