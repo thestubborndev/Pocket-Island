@@ -17,9 +17,12 @@
             }
             return !prefix;
         });
-        wooga.castle.prefix = prefix;
-        //this is the most used prefixed prop
-        wooga.castle.prefixedTransform = prefix? prefix + 'Transform' : 'transform';
+        if (prefix) {
+            wooga.castle.prefix = prefix.toLowerCase();
+            wooga.castle.prefixedTransform = prefix === 'Moz' ? 'MozTransform' : prefix + 'Transform';
+        } else {
+            wooga.castle.prefixedTransform = 'transform';
+        }
     }());
 
     wooga.castle.capabilities = {
