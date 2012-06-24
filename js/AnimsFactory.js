@@ -272,11 +272,11 @@
 
         element.addEventListener(utils.prefix("AnimationEnd"), function animationEndHandler (event) {
             if (event.target === element) {
-                element.removeEventListener(utils.prefix("AnimationEnd"), animationEndHandler, false);
-                rootNode.removeChild(element);
+                element.parentNode.removeChild(element);
                 if( typeof config.callback === "function") {
                     config.callback();
                 }
+                element.removeEventListener(utils.prefix("AnimationEnd"), animationEndHandler, false);
             }
         }, false);
         return element;
@@ -332,7 +332,7 @@
                 utils.removeOnAnimationEnd(feedbackicon, function () {
                     wooga.castle.DooberTooltip.get(config.feedback[1]).add(amount);
                 });
-            }, 1);
+            }, 15);
         }
         return this;
     };
