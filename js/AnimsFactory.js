@@ -214,7 +214,7 @@
             top, left;
 
         castleOverlay.className = 'feedback_anim ';
-        var castleImage = iconDefinition.image.cloneNode();
+        var castleImage = iconDefinition.image.cloneNode(!0);
         castleOverlay.appendChild( castleImage );
 
 
@@ -301,7 +301,7 @@
 
 
             feedbackicon.className = 'feedback_anim to_' + config.feedback[1];
-            feedbackicon.appendChild( iconDefiniition.image.cloneNode() );
+            feedbackicon.appendChild( iconDefiniition.image.cloneNode(!0) );
             amountText = document.createTextNode(amount);
             feedbackicon.appendChild((function(){
                 var node = document.createElement('span');
@@ -358,7 +358,7 @@
 
 
         feedbackicon.className = 'feedbacker to_' + config.feedback[1];
-        feedbackicon.appendChild( iconDefiniition.image.cloneNode() );
+        feedbackicon.appendChild( iconDefiniition.image.cloneNode(!0) );
 
 
         top = ( entityView.y + ( entityView.height * 0.5 ) ) -0.5 * iconDefiniition.height * gridUnit;
@@ -435,7 +435,7 @@
             top, left;
 
         feedbackicon.className = 'feedback_anim ' + config.type + 'ie';
-        feedbackicon.appendChild( iconDefiniition.image.cloneNode() );
+        feedbackicon.appendChild( iconDefiniition.image.cloneNode(!0) );
 
         style.top = style.left = 0;
         style[wooga.castle.prefixedTransform] = "translate3d(" + (destination.offsetLeft + 10) + "px," + (destination.offsetTop) + "px,0)";
