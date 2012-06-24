@@ -3,7 +3,7 @@
 (function () {
     "use strict";
     var utils = wooga.castle.utils,
-        prefix = wooga.castle.prefix,
+        prefix,
         oAnimationTemplate,
         iAnimationTemplate,
         animationsConfig,
@@ -149,6 +149,7 @@
 
 
     AnimsFactory.prototype.initAnimationDefinitions = function () {
+            prefix = wooga.castle.prefix;
             oAnimationTemplate = 
             '@-' + prefix + '-keyframes {oName} {\n' +
                 '0%   { -' + prefix + '-transform: translateX(0); }\n' +
