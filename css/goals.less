@@ -1,3 +1,5 @@
+@import "mix.less";
+
 .xgoals {
     position: absolute;
     top: 0px; bottom: 0px;
@@ -31,7 +33,7 @@
     font: normal 28px/42px 'Bubblegum Sans', sans-serif;
     color: #fff;
     text-shadow: 1px 1px 2px #000;
-    -webkit-transform: rotate(1deg);
+    .transform(rotate(1deg));
 }
 .xgoals h1 {
     font: 36px/108px 'Bubblegum Sans', sans-serif;
@@ -47,7 +49,7 @@
     text-align: center;
     text-shadow: 1px 1px 1px rgba(0,0,0,.5);
     white-space: nowrap;
-    -webkit-transform: rotate(1deg);
+    .transform(rotate(1deg));
 }
 .xgoals .subgoals {
     position: absolute;
@@ -57,7 +59,7 @@
     overflow: hidden;
 }
 .xgoals .subgoals ul {
-    -webkit-transform: translate3d(0, 0, 0);
+    .transform(translate3d(0, 0, 0));
     overflow: hidden;
 }
 .xgoals hr {
@@ -74,6 +76,7 @@
 }
 .xgoals .subgoals li {
     display: -webkit-box;
+    display: -moz-box;
     height: 224px;
     margin: 6px 0;
     text-align: center;
@@ -83,7 +86,7 @@
     border-radius: 20px;
     color: #977f63;
     pointer-events: none;
-    -webkit-transform: translate3d(0, 0, 0);
+    .transform(translate3d(0, 0, 0));
 }
 .subgoals li, .subgoals .gold {
     font-family: 'Bubblegum Sans';
@@ -93,8 +96,11 @@
     width: 120px;
     margin: 0 10px;
     display: -webkit-box;
+    display: -moz-box;
     -webkit-box-pack: center;
     -webkit-box-orient: vertical;
+    -moz-box-pack: center;
+    -moz-box-orient: vertical;
 }
     .thumbnail img {
         max-width: 120px;
@@ -110,7 +116,7 @@
         border: 4px solid #f00;
         border-radius: 10px;
         position: absolute;
-        -webkit-transform: rotate(-5deg) translate(40px, -20px);
+        .transform(rotate(-5deg) translate(40px, -20px));
         font: normal 36px/30px 'Luckiest Guy', sans-serif;
     }
     .done .thumbnail figure{
@@ -118,6 +124,7 @@
     }
 .xgoals .description {
     -webkit-box-flex: 1;
+    -moz-box-flex: 1;
     padding: 0 20px;
     margin: 20px 0;
     border-left: 4px solid #c3b096;
@@ -153,6 +160,12 @@
     -webkit-animation-duration: .8s;
     -webkit-animation-direction: alternate;
     -webkit-animation-timing-function: ease;
+
+    -moz-animation-name: pulse;
+    -moz-animation-iteration-count: infinite;
+    -moz-animation-duration: .8s;
+    -moz-animation-direction: alternate;
+    -moz-animation-timing-function: ease;
 }
 .done .reward .details {
     display: none;
@@ -194,6 +207,10 @@
 	-webkit-animation-duration: .8s;
 	-webkit-animation-iteration-count: 1;
 	-webkit-animation-timing-function: ease-in;
+    -moz-animation-name: popOverlay;
+    -moz-animation-duration: .8s;
+    -moz-animation-iteration-count: 1;
+    -moz-animation-timing-function: ease-in;
 }
 .finished .bubble {
     border-radius: 24px;
@@ -217,6 +234,13 @@
 	-webkit-animation-iteration-count: 1;
 	-webkit-animation-timing-function: ease-in;
 	-webkit-animation-fill-mode: backwards;
+
+    -moz-animation-name: appear;
+    -moz-animation-duration: .5s;
+    -moz-animation-delay: .8s;
+    -moz-animation-iteration-count: 1;
+    -moz-animation-timing-function: ease-in;
+    -moz-animation-fill-mode: backwards;
 }
 .finished h1 {
     height: 200px;
@@ -304,12 +328,15 @@
     -webkit-transition: opacity .4s, -webkit-transform .4s;
     -webkit-transform: scale(1, 1);
     -webkit-transform-origin: 10% 100%;
+    -moz-transition: opacity .4s, -moz-transform .4s;
+    -moz-transform: scale(1, 1);
+    -moz-transform-origin: 10% 100%;
 }
 .goals.hidden{
     display: block;
     pointer-events: none;
     opacity: 0;
-    -webkit-transform: scale(0, 0);
+    .transform(scale(0, 0));
 }
 .goals .subgoals li:first-child {
     margin-top: 20px;
@@ -331,6 +358,9 @@
     display: -webkit-box;
     -webkit-box-pack: center;
     -webkit-box-align: center;
+    display: -moz-box;
+    -moz-box-pack: center;
+    -moz-box-align: center;
 }
 .goals .subgoals .pay div.image {
     padding-top: 1em;
@@ -338,6 +368,7 @@
 .goals .subgoals .panel div.image img {
     max-height: 120px;
     display: -webkit-box;
+    display: -moz-box;
 }
 .goals .subgoals .panel div.specification {
     margin: 10px 10px 10px 160px;
@@ -372,6 +403,7 @@
     margin: -30px auto 18px;
     background: url(../images/popup/tick.png) 0 0 no-repeat;
     -webkit-background-size: contain;
+    -moz-background-size: contain;
 }
 .goal-screen-subgoals .subgoals .panel.done button{
     display: none;
@@ -385,6 +417,7 @@
 }
 .goals .rewards .embossed {
     display: -webkit-box;
+    display: -moz-box;
     height: 160px;
 }
 .goals .rewards figure {
@@ -394,6 +427,7 @@
     background-size: 80px;
     color: #543001;
     -webkit-box-flex: 1;
+    -moz-box-flex: 1;
     margin: 0;
     text-align: center;
     text-transform: capitalize;
