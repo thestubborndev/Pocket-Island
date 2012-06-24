@@ -865,7 +865,18 @@ wooga.castle.config = wooga.castle.config || {};
     };
 
     utils.prefix = function (prop) {
-        return wooga.castle.prefix + prop;
+        var p, prefix = wooga.castle.prefix;
+        if ('moz' === prefix) {
+            switch (prop) {
+                case 'AnimationEnd':
+                    p = 'animationend';
+                    break;
+                case 'TransitionEnd':
+                    p = 'transitionend';
+                    break;
+            }
+        }
+        return p || prefix + prop;
     }
 
 
