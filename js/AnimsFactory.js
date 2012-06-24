@@ -214,7 +214,7 @@
             top, left;
 
         castleOverlay.className = 'feedback_anim ';
-        var castleImage = iconDefinition.image.cloneNode(!0);
+        var castleImage = iconDefinition.image.cloneNode(true);
         castleOverlay.appendChild( castleImage );
 
 
@@ -301,7 +301,7 @@
 
 
             feedbackicon.className = 'feedback_anim to_' + config.feedback[1];
-            feedbackicon.appendChild( iconDefiniition.image.cloneNode(!0) );
+            feedbackicon.appendChild( iconDefiniition.image.cloneNode(true) );
             amountText = document.createTextNode(amount);
             feedbackicon.appendChild((function(){
                 var node = document.createElement('span');
@@ -329,7 +329,7 @@
             setTimeout(function(){
                 style[wooga.castle.prefixedTransform] = "translate3d(" + (destination.offsetLeft + 10) + "px," + (destination.offsetTop) + "px,0)";
 
-                utils.removeOnAnimationEnd(feedbackicon, function () {
+                utils.removeOnTransitionEnd(feedbackicon, function () {
                     wooga.castle.DooberTooltip.get(config.feedback[1]).add(amount);
                 });
             }, 15);
@@ -358,7 +358,7 @@
 
 
         feedbackicon.className = 'feedbacker to_' + config.feedback[1];
-        feedbackicon.appendChild( iconDefiniition.image.cloneNode(!0) );
+        feedbackicon.appendChild( iconDefiniition.image.cloneNode(true) );
 
 
         top = ( entityView.y + ( entityView.height * 0.5 ) ) -0.5 * iconDefiniition.height * gridUnit;
@@ -435,7 +435,7 @@
             top, left;
 
         feedbackicon.className = 'feedback_anim ' + config.type + 'ie';
-        feedbackicon.appendChild( iconDefiniition.image.cloneNode(!0) );
+        feedbackicon.appendChild( iconDefiniition.image.cloneNode(true) );
 
         style.top = style.left = 0;
         style[wooga.castle.prefixedTransform] = "translate3d(" + (destination.offsetLeft + 10) + "px," + (destination.offsetTop) + "px,0)";
@@ -448,7 +448,7 @@
             style[wooga.castle.prefixedTransform] = "translate3d(" + (left) + "px," + (top) + "px,0)";
             style.opacity = 1;
             utils.removeOnAnimationEnd(feedbackicon);
-        }, 1);
+        }, 15);
     };
 
     AnimsFactory.prototype.showXPFeedback = function(message){
