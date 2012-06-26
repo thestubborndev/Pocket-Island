@@ -11,17 +11,20 @@
     (function () {
         var style = document.createElement('div').style,
             prefix;
-        ['webkit', 'Moz', 'o', 'ms', ''].forEach(function (candidate) {
-            if ('undefined' !== typeof style[candidate + 'Transform']) {
-                prefix = candidate;
+        var candidates = {
+            webkit: 'webkitTransform',
+            moz:    'MozTransform', // 'M' is uppercased
+            ms:     'msTransform',
+            o:      'oTransform',
+            '':     'transform'
+        };
+        for (var prefix in candidates) {
+            var candidate = candidates[prefix];
+            if ('undefined' !== typeof style[candidate]) {
+                wooga.castle.prefix = prefix;
+                wooga.castle.prefixedTransform = candidate;
+                break;
             }
-            return !prefix;
-        });
-        if (prefix) {
-            wooga.castle.prefix = prefix.toLowerCase();
-            wooga.castle.prefixedTransform = prefix === 'Moz' ? 'MozTransform' : prefix + 'Transform';
-        } else {
-            wooga.castle.prefixedTransform = 'transform';
         }
     }());
 
