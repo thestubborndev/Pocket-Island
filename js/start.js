@@ -45,6 +45,55 @@
         document.location = 'ipad.html';
     }
 
+    (function () {
+        var enabledFS = {
+            webkit: 'webkitFullscreenEnabled',
+            moz:    'mozFullScreenEnabled',
+            ms:     'FULL_SCREEN_NOT_SUPPORTED',
+            o:      'FULL_SCREEN_NOT_SUPPORTED',
+            '':     'fullScreenEnabled'
+        }
+        
+        var isFS = {
+            webkit: 'webkitIsFullScreen',
+            moz:    'mozFullScreen',
+            ms:     'FULL_SCREEN_NOT_SUPPORTED',
+            o:      'FULL_SCREEN_NOT_SUPPORTED',
+            '':     'fullScreen'
+        }
+        
+        var requestFS = {
+            webkit: 'webkitRequestFullScreen',
+            moz:    'mozRequestFullScreen',
+            ms:     'FULL_SCREEN_NOT_SUPPORTED',
+            o:      'FULL_SCREEN_NOT_SUPPORTED',
+            '':     'requestFullScreen'
+        }
+        
+        var cancelFS = {
+            webkit: 'webkitCancelFullScreen',
+            moz:    'mozCancelFullScreen',
+            ms:     'FULL_SCREEN_NOT_SUPPORTED',
+            o:      'FULL_SCREEN_NOT_SUPPORTED',
+            '':     'cancelFullScreen'
+        }
+        
+        var prefix = wooga.castle.prefix;
+
+        if (document[enabledFS[prefix]]) {
+            wooga.castle.toggleFullScreen = function() {
+                if (document[isFS[prefix]])
+                    document[cancelFS[prefix]]();
+                else
+                    document.documentElement[requestFS[prefix]]();
+            };
+            // currently bound to ENTER key TODO maybe display move_icon.png in the aside?
+            document.addEventListener('keydown', function(e) {  
+                if (e.keyCode == 13)
+                    wooga.castle.toggleFullScreen();  
+            }, false);
+        }
+    }());
 
     wooga.castle.isNativeWrapper = function() {
         var result = !wooga.castle.capabilities.desktop && !wooga.castle.capabilities.android && (! /Safari/.test(navigator.userAgent));
