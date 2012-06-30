@@ -45,10 +45,8 @@ padding-top: 10px;
   z-index: 1101;
   text-align: center;
   color: #fff;
-  -webkit-user-select: none;
-  -webkit-user-drag: none;
-  -moz-user-select: none;
-  -moz-user-drag: none;
+  .user-select(none);
+  .user-drag(none);
   border-radius: 10px;
 }
 header > div {
@@ -65,10 +63,8 @@ header #coins, header #food, header #population, header #level {
 }
 header div.doober-tooltips{
     pointer-events: none;
-    -webkit-user-select: none;
-    -webkit-user-drag: none;
-      -moz-user-select: none;
-      -moz-user-drag: none;
+    .user-select(none);
+    .user-drag(none);
     position: absolute;
     text-align: center;
     width: 100%;
