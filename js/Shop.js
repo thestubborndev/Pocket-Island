@@ -75,7 +75,7 @@
 
         nav = document.querySelector('nav');
         hud_goals = document.getElementById('hud-goals');
-        var defaultDepartmentId, ddi = 0;
+        var defaultDepartmentId;
 
         var shopItems = {}, i;
 
@@ -147,17 +147,14 @@
 
         };
 
-        for (i in this.shopItems) {
-            if (this.shopItems.hasOwnProperty(i)) {
+        this.shopItems.forEach(function (item, ddi) {
                 if (ddi++ === Shop.DEFAULT_DEPARTMENT_INDEX) {
-                    defaultDepartmentId = i;
+                    defaultDepartmentId = item.name;
                 }
+                shopItems[item.name] = item.items.map(setItemProperties, this);
+                shopItems[item.name].sort(this.sortShopItems);
 
-                shopItems[i] = this.shopItems[i].map(setItemProperties, this);
-
-                shopItems[i].sort(this.sortShopItems);
-            }
-        }
+        }, this);
 
         var shopWrapper = document.createElement("div");
         shopWrapper.id = "shop";
