@@ -44,7 +44,7 @@
 
         if(wooga.castle.capabilities.iPod) {
             var loader = document.getElementById('loadingScreen');
-            loader.querySelector('p').innerHTML = "Oops! Magic Land is currently not supported on the iPod.";
+            loader.querySelector('p').innerHTML = "Oops! Pocket Island is currently not supported on the iPod.";
             loader.querySelector('.progress').style.display = document.querySelector('.comic').style.display = "none";
             return;
         }
