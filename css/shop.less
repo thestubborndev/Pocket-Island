@@ -111,12 +111,8 @@
         left: 30px; right: 30px;
         overflow: hidden;
         background: transparent;
-        -webkit-tap-higlight: none;
-        -webkit-user-select: none;
-        -webkit-tap-highlight-color: rgba(0,0,0,0);
-        -moz-tap-higlight: none;
-        -moz-user-select: none;
-        -moz-tap-highlight-color: rgba(0,0,0,0);
+        .user-select(none);
+        .user-drag(none);
     }
     hr {
         border: none;
@@ -134,12 +130,8 @@
     }
     .department {
         display: none;
-        -webkit-tap-higlight: none;
-        -webkit-user-select: none;
-        -webkit-tap-highlight-color: rgba(0,0,0,0);
-        -moz-tap-higlight: none;
-        -moz-user-select: none;
-        -moz-tap-highlight-color: rgba(0,0,0,0);
+        .user-select(none);
+        .user-drag(none);
         .transform(translate3d(0, 0, 0));
         &.active {
             display: block;

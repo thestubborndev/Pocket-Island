@@ -25,8 +25,7 @@ canvas {
     position: relative;
     z-index: 199;
     display: block;
-    -webkit-user-select: none;
-    -moz-user-select: none;
+    .user-select(none);
 }
 #info-grid {
     opacity: 0.5;
@@ -36,10 +35,8 @@ canvas {
     left: 0;
     z-index: 200;
     pointer-events: none;
-    -webkit-user-select: none;
-    -webkit-user-drag: none;
-    -moz-user-select: none;
-    -moz-user-drag: none;
+    .user-select(none);
+    .user-drag(none);
     .transition(opacity .4s);
 }
 .invisible {
@@ -66,10 +63,8 @@ canvas {
 }
 #game_overlay {
     pointer-events: none;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -webkit-user-drag: none;
-    -moz-user-drag: none;
+    .user-select(none);
+    .user-drag(none);
     z-index: 1000;
 }
 
@@ -285,8 +280,7 @@ div.navigation .buttons {
     -moz-animation-name: revealandslideOutter, fadePlusSlideUp;
     -moz-animation-duration: 1.5s;
     pointer-events: none;
-    -webkit-user-select: none;
-    -moz-user-select: none;
+    .user-select(none);
 }
 
 .quick-notif.flyout{
@@ -321,8 +315,7 @@ div.navigation .buttons {
 
 .feedback_anim{
     pointer-events: none;
-    -webkit-user-select: none;
-    -moz-user-select: none;
+    .user-select(none);
     position: absolute;
     top: 0;
     left: 0;
@@ -370,8 +363,8 @@ body[data-level-treshold="4"] .feedback_anim{
 
 .tuthilite{
     pointer-events: none!important;
-    -webkit-user-select: none;
-    -webkit-user-drag:none;
+    .user-select(none);
+    .user-drag(none);
     display: block;
     outline: 3px solid rgba(100, 255, 100, 1.0);
     background: rgba(100, 255, 100, .4);
@@ -381,8 +374,8 @@ body[data-level-treshold="4"] .feedback_anim{
 
 .tutarrow{
     pointer-events: none!important;
-    -webkit-user-select: none;
-    -webkit-user-drag:none;
+    .user-select(none);
+    .user-drag(none);
     display: block;
     width: 178px;
     height: 177px;
@@ -393,8 +386,8 @@ body[data-level-treshold="4"] .feedback_anim{
         background:  url(../images/hud/hand.png) no-repeat;
         background-size: contain;
         pointer-events: none!important;
-        -webkit-user-select: none;
-        -webkit-user-drag:none;
+        .user-select(none);
+        .user-drag(none);
         position: relative;
         left: 0; top: 0;
         margin: 0;
@@ -428,7 +421,7 @@ body[data-level-treshold="4"] .feedback_anim{
     display: none;
     pointer-events: none;
     z-index: 80001;
-    -webkit-user-select: none;
+    .user-select(none);
     *{
         pointer-events: auto;
     }
@@ -491,10 +484,8 @@ body[data-level-treshold="4"] .feedback_anim{
     top: 0; left: 0;
     display: block;
     opacity: 1;
-    -webkit-user-select: none;
-    -webkit-user-drag: none;
-    -moz-user-select: none;
-    -moz-user-drag: none;
+    .user-select(none);
+    .user-drag(none);
     .transition(opacity .6s);
 }
 #enforce-modal, #uiblocker{
@@ -530,10 +521,8 @@ body[data-level-treshold="4"] .feedback_anim{
     z-index: 100000;
     opacity: 1;
     pointer-events: auto;
-    -webkit-user-select: none;
-    -webkit-user-drag: none;
-    -moz-user-select: none;
-    -moz-user-drag: none;
+    .user-select(none);
+    .user-drag(none);
 }
 
 @-webkit-keyframes spin{
