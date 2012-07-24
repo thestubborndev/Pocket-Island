@@ -55,6 +55,7 @@
   right: 0;
   background: url("../images/popup/wood-rough.png") top center;
   -webkit-border-image: url("../images/popup/bar.png") 8 0 8 0 repeat;
+  -moz-border-image: url("../images/popup/bar.png") 8 0 8 0 repeat;
   border-top-width: 8px;
   border-right-width: 0px;
   border-bottom-width: 8px;
@@ -85,6 +86,7 @@
   left: 100%;
   top: -2px;
   -webkit-appearance: none;
+  -moz-appearance: none;
   margin: 0;
   border: 0;
   padding: 0;
@@ -120,18 +122,22 @@
   padding: 0;
   text-align: center;
 }
-#level-up .embossed, .rewards .embossed {
+#level-up .embossed,
+.rewards .embossed {
   z-index: -1;
   position: relative;
 }
-.page .rewards, .page .unlocked {
+.page .rewards,
+.page .unlocked {
   margin: 0 16px 10px;
   text-align: center;
 }
-#level-up .rewards, #level-up .unlocked {
+#level-up .rewards,
+#level-up .unlocked {
   margin-left: 135px;
 }
-.page .rewards .embossed, .page .unlocked .embossed {
+.page .rewards .embossed,
+.page .unlocked .embossed {
   height: 44px;
 }
 .page .embossed.share {
@@ -162,10 +168,13 @@ button.ok {
   color: #fff;
   text-align: center;
   -webkit-box-shadow: 0 2px 5px rgba(255, 255, 255, 0.6) inset, 0 2px 2px rgba(0, 0, 0, 0.6);
+  -moz-box-shadow: 0 2px 5px rgba(255, 255, 255, 0.6) inset, 0 2px 2px rgba(0, 0, 0, 0.6);
   text-shadow: 0 -1px 1px rgba(0, 0, 0, 0.6);
   padding: 6px 15px 3px 15px;
 }
-.button, button.askFriends, button.ok {
+.button,
+button.askFriends,
+button.ok {
   padding: 12px 25px 10px 25px;
 }
 .button:active,
@@ -173,6 +182,7 @@ button.invite:active,
 button.askFriends:active,
 button.ok:active {
   -webkit-box-shadow: 0 0px 5px rgba(255, 255, 255, 0.6) inset, 0 1px 1px rgba(0, 0, 0, 0.3);
+  -moz-box-shadow: 0 0px 5px rgba(255, 255, 255, 0.6) inset, 0 1px 1px rgba(0, 0, 0, 0.3);
   text-shadow: 0 0 10px #ff0;
 }
 .button.invite,
@@ -182,7 +192,8 @@ button.askFriends {
   background-color: #31A5DD;
   border-color: #096DA2;
 }
-.button.deny, button.deny {
+.button.deny,
+button.deny {
   background-color: #ffa300;
   border-color: #af7000;
   padding: 6px 5px 3px 5px;
@@ -191,6 +202,7 @@ button.askFriends {
 .panel {
   display: block;
   -webkit-background-clip: padding-box;
+  -moz-background-clip: padding-box;
   color: #543001;
   border-radius: 9px;
   border: 1px solid #B46A2E;
@@ -203,6 +215,7 @@ button.askFriends {
   border: 1px solid orange;
   border-radius: 6px;
   -webkit-box-shadow: 0 0 4px rgba(0, 0, 0, 0.3) inset;
+  -moz-box-shadow: 0 0 4px rgba(0, 0, 0, 0.3) inset;
   padding: 9px 5px 12px 5px;
   text-align: center;
   background: #fffffe;
@@ -267,10 +280,13 @@ p.tiny strong {
     border-width: 2px;
     font: bold 36px/32px 'Luckiest Guy', sans-serif;
     -webkit-box-shadow: 0 4px 10px rgba(255, 255, 255, 0.6) inset, 0 4px 4px rgba(0, 0, 0, 0.6);
+    -moz-box-shadow: 0 4px 10px rgba(255, 255, 255, 0.6) inset, 0 4px 4px rgba(0, 0, 0, 0.6);
     text-shadow: 0 -2px 2px rgba(0, 0, 0, 0.6);
     padding: 12px 30px 6px 30px;
   }
-  .button, button.askFriends, button.ok {
+  .button,
+  button.askFriends,
+  button.ok {
     padding: 24px 45px 15px 45px;
   }
   .button:active,
@@ -278,9 +294,11 @@ p.tiny strong {
   button.askFriends:active,
   button.ok:active {
     -webkit-box-shadow: 0 0px 5px rgba(255, 255, 255, 0.6) inset, 0 1px 1px rgba(0, 0, 0, 0.3);
+    -moz-box-shadow: 0 0px 5px rgba(255, 255, 255, 0.6) inset, 0 1px 1px rgba(0, 0, 0, 0.3);
     text-shadow: 0 0 20px #ff0;
   }
-  .button.deny, button.deny {
+  .button.deny,
+  button.deny {
     padding: 12px 10px 6px 10px;
   }
   .panel {
@@ -293,12 +311,14 @@ p.tiny strong {
     border-width: 2px;
     border-radius: 12px;
     -webkit-box-shadow: 0 0 8px rgba(0, 0, 0, 0.3) inset;
+    -moz-box-shadow: 0 0 8px rgba(0, 0, 0, 0.3) inset;
     padding: 18px 10px 24px 10px;
     font-size: 32px;
   }
   /* Pages, used for Shop/Level-Up/Castle Upgrade */
   .page {
     -webkit-border-image: url("../images/popup/bar.png") 16 0 16 0 repeat;
+    -moz-border-image: url("../images/popup/bar.png") 16 0 16 0 repeat;
     border-top-width: 16px;
     border-right-width: 0px;
     border-bottom-width: 16px;
@@ -348,13 +368,16 @@ p.tiny strong {
     background: url("../images/popup/h2.png") no-repeat;
     margin: 0 auto -20px;
   }
-  .page .rewards, .page .unlocked {
+  .page .rewards,
+  .page .unlocked {
     margin: 0 32px 20px;
   }
-  #level-up .rewards, #level-up .unlocked {
+  #level-up .rewards,
+  #level-up .unlocked {
     margin-left: 270px;
   }
-  .page .rewards .embossed, .page .unlocked .embossed {
+  .page .rewards .embossed,
+  .page .unlocked .embossed {
     height: 88px;
   }
   .page .embossed.share {
@@ -390,7 +413,8 @@ p.tiny strong {
     margin-bottom: 10px;
   }
 }
-#shop div.head div.gold, #castle-complete div.head div.gold {
+#shop div.head div.gold,
+#castle-complete div.head div.gold {
   position: absolute;
   top: 18px;
   left: 25px;
@@ -399,7 +423,8 @@ p.tiny strong {
   text-shadow: 0 1px 1px #000;
   background: url(../images/status/coins-small.png) no-repeat 0 center;
 }
-#shop .goldCost i, #castle-complete .purchaseItem i {
+#shop .goldCost i,
+#castle-complete .purchaseItem i {
   display: inline-block;
   width: 36px;
   height: 38px;
@@ -412,12 +437,19 @@ figure.unlockable-dom-node {
   margin: 0;
   pointer-events: none;
   opacity: 1;
-  -webkit-transition: opacity .5s;
+  -webkit-transition: opacity 0.5s;
+  -moz-transition: opacity 0.5s;
+  -ms-transition: opacity 0.5s;
+  -o-transition: opacity 0.5s;
+  transition: opacity 0.5s;
 }
 figure.unlockable-dom-node.unlocked {
   -webkit-animation-name: fadeout-unlockable;
   -webkit-animation-duration: 0.4s;
   -webkit-animation-fill-mode: forwards;
+  -moz-animation-name: fadeout-unlockable;
+  -moz-animation-duration: 0.4s;
+  -moz-animation-fill-mode: forwards;
 }
 figure.unlockable-dom-node header {
   font-family: 'Luckiest Guy', sans-serif;
@@ -457,7 +489,8 @@ figure.unlockable-dom-node header div {
   height: auto;
   display: block;
 }
-figure.unlockable-dom-node[data-zone-number="2"] header, figure.unlockable-dom-node[data-zone-number="5"] header {
+figure.unlockable-dom-node[data-zone-number="2"] header,
+figure.unlockable-dom-node[data-zone-number="5"] header {
   margin-top: -60px;
 }
 .notification {
@@ -476,9 +509,11 @@ figure.unlockable-dom-node[data-zone-number="2"] header, figure.unlockable-dom-n
 }
 .notification.ready {
   -webkit-transition: -webkit-transform 0.6s 0.3s ease-out;
+  -moz-transition: -moz-transform 0.6s 0.3s ease-out;
 }
 .notification.read {
   -webkit-transition-delay: 3.5s;
+  -moz-transition-delay: 3.5s;
 }
 .popup.grab-attention .cancel,
 .grab-attention #castle-complete .cancel,
@@ -490,4 +525,10 @@ figure.unlockable-dom-node[data-zone-number="2"] header, figure.unlockable-dom-n
   -webkit-animation-direction: alternate;
   -webkit-animation-timing-function: ease;
   -webkit-transition: -webkit-transform 0.4s ease-out;
+  -moz-animation-name: pulse;
+  -moz-animation-iteration-count: infinite;
+  -moz-animation-duration: .2s;
+  -moz-animation-direction: alternate;
+  -moz-animation-timing-function: ease;
+  -moz-transition: -moz-transform 0.4s ease-out;
 }

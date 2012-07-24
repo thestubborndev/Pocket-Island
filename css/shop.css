@@ -6,6 +6,7 @@
   left: 0;
   background: url("../images/popup/wood-rough.png") top center;
   -webkit-border-image: url("../images/popup/bar.png") 16 0 16 0 repeat;
+  -moz-border-image: url("../images/popup/bar.png") 16 0 16 0 repeat;
   border-top-width: 16px;
   border-right-width: 0px;
   border-bottom-width: 16px;
@@ -15,12 +16,25 @@
   display: block;
   opacity: 0;
   -webkit-transform: scale(0, 0);
+  -moz-transform: scale(0, 0);
+  -ms-transform: scale(0, 0);
+  -o-transform: scale(0, 0);
+  transform: scale(0, 0);
   -webkit-transform-origin: 80% 100%;
+  -moz-transform-origin: 80% 100%;
+  -ms-transform-origin: 80% 100%;
+  -o-transform-origin: 80% 100%;
+  transform-origin: 80% 100%;
   -webkit-transition: opacity 0.4s, -webkit-transform 0.4s;
+  -moz-transition: opacity 0.4s, -moz-transform 0.4s;
 }
 #shop.active {
   opacity: 1;
   -webkit-transform: scale(1, 1);
+  -moz-transform: scale(1, 1);
+  -ms-transform: scale(1, 1);
+  -o-transform: scale(1, 1);
+  transform: scale(1, 1);
 }
 #shop div.head {
   position: relative;
@@ -51,6 +65,7 @@
   height: 92px;
   background: url("../images/popup/close_button.png") no-repeat 0 0;
   -webkit-appearance: none;
+  -moz-appearance: none;
   margin: 0;
   border: 0;
   padding: 0;
@@ -64,10 +79,12 @@
 #shop ul.departments_list {
   height: 64px;
   -webkit-box-shadow: 0 2px 3px #764d21, 0 2px 7px #ffffbe inset;
+  -moz-box-shadow: 0 2px 3px #764d21, 0 2px 7px #ffffbe inset;
   height: 32px;
   display: table;
   width: 100%;
   -webkit-background-clip: padding-box;
+  -moz-background-clip: padding-box;
   border: 4px solid #804817;
   border-radius: 14px;
   background: url("../images/popup/wood-rough.png") center -700px;
@@ -116,9 +133,20 @@
   right: 30px;
   overflow: hidden;
   background: transparent;
+  -webkit-touch-callout: none;
+  -moz-touch-callout: none;
   -webkit-tap-higlight: none;
-  -webkit-user-select: none;
+  -moz-tap-higlight: none;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  -moz-tap-highlight-color: rgba(0, 0, 0, 0);
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-user-drag: none;
+  -moz-user-drag: none;
+  -ms-user-drag: none;
+  user-drag: none;
 }
 #shop hr {
   border: none;
@@ -132,13 +160,29 @@
   height: 16px;
   background: url("../images/popup/bar.png") repeat-x;
   -webkit-background-size: 100%;
+  -moz-background-size: 100%;
 }
 #shop .department {
   display: none;
+  -webkit-touch-callout: none;
+  -moz-touch-callout: none;
   -webkit-tap-higlight: none;
-  -webkit-user-select: none;
+  -moz-tap-higlight: none;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  -moz-tap-highlight-color: rgba(0, 0, 0, 0);
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-user-drag: none;
+  -moz-user-drag: none;
+  -ms-user-drag: none;
+  user-drag: none;
   -webkit-transform: translate3d(0, 0, 0);
+  -moz-transform: translate3d(0, 0, 0);
+  -ms-transform: translate3d(0, 0, 0);
+  -o-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
 }
 #shop .department.active {
   display: block;
@@ -151,11 +195,16 @@
   margin-left: 0px;
   margin-right: 0px!important;
   -webkit-transform: translate3d(0, 0, 0);
+  -moz-transform: translate3d(0, 0, 0);
+  -ms-transform: translate3d(0, 0, 0);
+  -o-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
 }
 #shop .department li .image {
   float: left;
   width: 144px;
   height: 100%;
+  display: inline-block;
   display: -webkit-box;
   -webkit-box-pack: center;
   -webkit-box-align: center;
@@ -194,7 +243,9 @@
 #shop .department li.population-maxed .population {
   color: red;
 }
-#shop .department li.unaffordable, #shop .department li.population-maxed, #shop .department li.unalevelable {
+#shop .department li.unaffordable,
+#shop .department li.population-maxed,
+#shop .department li.unalevelable {
   background: #f4c555;
 }
 #shop .department li.unaffordable .embossed,
@@ -209,7 +260,9 @@
   border-color: brown;
   margin-top: 80px;
 }
-#shop .department li.unaffordable:before, #shop .department li.population-maxed:before, #shop .department li.unalevelable:before {
+#shop .department li.unaffordable:before,
+#shop .department li.population-maxed:before,
+#shop .department li.unalevelable:before {
   font: normal 48px/220px 'Bubblegum Sans', sans-serif;
   text-align: center;
   color: #a7610c;
@@ -222,7 +275,8 @@
   /*"*/
 
 }
-#shop .department li.unalevelable:before, #shop .department li.population-maxed:before {
+#shop .department li.unalevelable:before,
+#shop .department li.population-maxed:before {
   content: attr(title);
 }
 #shop .department .goldCost {
@@ -288,15 +342,24 @@
 /* iPad Version */
 .ipad #shop {
   -webkit-transform: scale(1, 1) translatey(400px);
+  -moz-transform: scale(1, 1) translatey(400px);
+  -ms-transform: scale(1, 1) translatey(400px);
+  -o-transform: scale(1, 1) translatey(400px);
+  transform: scale(1, 1) translatey(400px);
   top: auto;
   display: none;
   -webkit-border-image: url("../images/popup/metal-border.jpg") 50 0 50 0 stretch;
+  -moz-border-image: url("../images/popup/metal-border.jpg") 50 0 50 0 stretch;
   border-top-width: 40px;
   height: 320px;
 }
 .ipad #shop.active {
   display: block;
   -webkit-transform: scale(1, 1) translatey(0);
+  -moz-transform: scale(1, 1) translatey(0);
+  -ms-transform: scale(1, 1) translatey(0);
+  -o-transform: scale(1, 1) translatey(0);
+  transform: scale(1, 1) translatey(0);
 }
 .ipad #shop div.head {
   position: absolute;
@@ -387,8 +450,11 @@
   max-width: 220px;
   height: 250px;
   background-size: 100% 100%;
+  position: relative;
 }
-.ipad #shop .departments .department li.unaffordable:before, .ipad #shop .departments .department li.population-maxed:before, .ipad #shop .departments .department li.unalevelable:before {
+.ipad #shop .departments .department li.unaffordable:before,
+.ipad #shop .departments .department li.population-maxed:before,
+.ipad #shop .departments .department li.unalevelable:before {
   font: normal 16px/16px 'Bubblegum Sans', sans-serif;
   text-indent: 0;
   margin-top: 200px;
@@ -396,7 +462,7 @@
 .ipad #shop .departments .department li .image {
   float: none;
   text-align: center;
-  width: 100%;
+  width: 220px;
   height: 90px;
   position: absolute;
   margin-top: 50px;
@@ -428,6 +494,9 @@
   display: -webkit-box;
   -webkit-box-pack: center;
   -webkit-box-align: center;
+  display: -moz-box;
+  -moz-box-pack: center;
+  -moz-box-align: center;
 }
 .ipad #shop .departments .department li div.specification .embossed {
   padding: 10px 0 15px;
