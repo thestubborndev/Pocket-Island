@@ -31,6 +31,7 @@ To build the game you need the following tools:
 
 - Finally, open http://0.0.0.0:8000/ipad.html to play the game (preferably in Chrome or Safari). 
 
+- Or use http://0.0.0.0:8000/fullscreen.html to play fullscreen.
 
 ## Rake tasks
 
